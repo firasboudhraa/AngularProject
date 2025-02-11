@@ -1,0 +1,32 @@
+<p>residences-component works!</p>
+
+<ul *ngFor="let r of listResidences" style="display: inline-block;">
+    <li>
+        <img [src]="r.image" alt="{{ r.name }}" class="residence-img">
+    </li>
+    <li>
+        <button (click)="showLocation(r)">Show Location</button>
+    </li>
+    <div [ngSwitch]="r.status">
+        <span *ngSwitchCase="'Disponible'" class="status available">🟢 Disponible</span>
+        <span *ngSwitchCase="'En Construction'" class="status construction">🟠 En Construction</span>
+        <span *ngSwitchCase="'Vendu'" class="status sold">🔴 Vendu</span>
+      </div>
+    
+      <button (click)="addToFavorites(r)">❤️ Like</button>
+
+</ul>
+
+<h3>⭐ Résidences Favorites :</h3>
+<ul *ngIf="favorites.length > 0; else noFavorites">
+    <li *ngFor="let fav of favorites">
+        <img [src]="fav.image" alt="{{ fav.name }}" class="residence-img">
+        <p>{{ fav.name }}</p>
+    </li>
+</ul>
+
+<ng-template #noFavorites>
+    <p>Aucune résidence favorite pour le moment.</p>
+</ng-template>
+
+
