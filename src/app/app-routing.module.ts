@@ -5,13 +5,15 @@ import { ResidencesComponentComponent } from './residences-component/residences-
 import { NotfoundComponent } from './notfound/notfound.component';
 import { DetailProdComponent } from './detail-prod/detail-prod.component';
 import { LoginComponent } from './login/login.component';
+import { AddResidenceComponent } from './add-residence/add-residence.component';
 
 const routes: Routes = [
   {path:'products',component:HomeComponent},
   {path:'residences',component:ResidencesComponentComponent},
   {path:'detail/:id',component:DetailProdComponent},
   {path:'login',component:LoginComponent},
-  {path:'',redirectTo:'products',pathMatch:'full'},
+  {path:'/addResidence',component:AddResidenceComponent},
+  {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'**',component:NotfoundComponent},
 ];
 

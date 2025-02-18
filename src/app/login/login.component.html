@@ -13,28 +13,28 @@
     <label>name</label>
     <input type="text" class="form-control" placeholder="name" formControlName="name" />
     <div  *ngIf="this.loginForm.controls['name'].invalid && this.loginForm.controls['name'].touched" class="alert alert-danger">
-       <p *ngIf="this.loginForm.controls['name'].hasError('required')"> name est obligatoire  </p> 
-       <p  *ngIf="this.loginForm.controls['name'].hasError('minlength')"> name doit etre superieur a 4</p>
+       <p *ngIf="this.loginForm.controls['name'].hasError('required')"> name is obligatory  </p> 
+       <p  *ngIf="this.loginForm.controls['name'].hasError('minlength')"> name must be at least 4 characters</p>
     </div>
 
     <label>cin</label>
     <input type="number" class="form-control" placeholder="cin" formControlName="cin"/>
     <div *ngIf="this.loginForm.controls['cin'].invalid &&this.loginForm.controls['cin'].touched" class="alert alert-danger">
-        <p *ngIf="this.loginForm.controls['cin'].hasError('required')"> cin est obligatoire</p>
-         <p *ngIf="this.loginForm.controls['cin'].hasError('length')"> cin doit etre 8 chiffres </p>
+        <p *ngIf="this.loginForm.controls['cin'].hasError('required')"> cin is obligatory</p>
+         <p *ngIf="this.loginForm.controls['cin'].hasError('length')"> cin must be 8 digits </p>
     </div>
 
     <label>email</label>
     <input type="email" class="form-control" placeholder="email" formControlName="email"/>
     <div *ngIf="this.loginForm.controls['email'].invalid  && this.loginForm.controls['email'].touched" class="alert alert-danger">
-        <p *ngIf="this.loginForm.controls['email'].hasError('required')">email est obligatoire</p>
-        <p *ngIf="this.loginForm.controls['email'].hasError('pattern')"> email doit etre valide </p>
+        <p *ngIf="this.loginForm.controls['email'].hasError('required')">email is obligatory</p>
+        <p *ngIf="this.loginForm.controls['email'].hasError('pattern')"> email must be valid </p>
     </div>
 
     <label>address</label>
     <input type="text" class="form-control" placeholder="address" formControlName="address" />
     <div *ngIf="this.loginForm.controls['address'].invalid && this.loginForm.controls['address'].touched" class="alert alert-danger">
-        <p *ngIf="this.loginForm.controls['address'].hasError('required')">address est obligatoire </p>
+        <p *ngIf="this.loginForm.controls['address'].hasError('required')">address is obligatory </p>
     </div>
 
 

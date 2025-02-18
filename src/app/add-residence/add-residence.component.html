@@ -1,0 +1,32 @@
+<p>add residence </p>
+
+<form [formGroup]="ResidenceForm">
+    <label>identity</label>
+    <input class="form-control" formControlName="id" type="number" placeholder="identity" />
+    <div *ngIf="this.ResidenceForm.controls['id'].invalid && this.ResidenceForm.controls['id'].touched" class="alert alert-danger">
+        <p *ngIf="this.ResidenceForm.controls['id'].hasError('required')"> identity is obligatory</p>
+        <p *ngIf="this.ResidenceForm.controls['id'].hasError('number')"> identity is a number</p>
+        <p *ngIf="this.ResidenceForm.controls['id'].hasError('minlength')"> identity is a number</p>
+    </div>
+
+    <label>name</label>
+    <input type="text" class="form-control" placeholder="name" formControlName="name" />
+    <div  *ngIf="this.ResidenceForm.controls['name'].invalid && this.ResidenceForm.controls['name'].touched" class="alert alert-danger">
+       <p *ngIf="this.ResidenceForm.controls['name'].hasError('required')"> name is obligatory  </p> 
+       <p  *ngIf="this.ResidenceForm.controls['name'].hasError('minlength')"> name must be at least 4 characters</p>
+    </div>
+
+    <label>address</label>
+    <input type="text" class="form-control" placeholder="address" formControlName="address" />
+    <div *ngIf="this.ResidenceForm.controls['address'].invalid && this.ResidenceForm.controls['address'].touched" class="alert alert-danger">
+        <p *ngIf="this.ResidenceForm.controls['address'].hasError('required')">address is obligatory </p>
+    </div>
+
+    <label>status</label>
+    <input class="form-control" formControlName="status" type="string" placeholder="identity" />
+    <div *ngIf="this.ResidenceForm.controls['status'].invalid && this.ResidenceForm.controls['status'].touched" class="alert alert-danger">
+        <p *ngIf="this.ResidenceForm.controls['status'].hasError('required')"> identity is obligatory</p>
+    </div>
+
+
+</form>

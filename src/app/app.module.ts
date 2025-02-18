@@ -11,6 +11,7 @@ import { RouterOutlet } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { DetailProdComponent } from './detail-prod/detail-prod.component';
 import { LoginComponent } from './login/login.component';
+import { AddResidenceComponent } from './add-residence/add-residence.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     NotfoundComponent,
     DetailProdComponent,
-    LoginComponent
+    LoginComponent,
+    AddResidenceComponent
   ],
   imports: [
     BrowserModule,
