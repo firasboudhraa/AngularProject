@@ -1,0 +1,42 @@
+<h1>Login Simple</h1>
+<label>login</label>
+<input type="text" class="form-control" placeholder="login" [formControl]="login"/>
+
+<label>Password</label>
+<input type="password" class="form-control" placeholder="password" [formControl]="pass"/>
+
+<input type="submit" value="save" (click)="save()" [disabled]="login.invalid || pass.invalid"/>
+
+
+<h1>Form Group</h1>
+<form [formGroup]="loginForm">
+    <label>name</label>
+    <input type="text" class="form-control" placeholder="name" formControlName="name" />
+    <div  *ngIf="this.loginForm.controls['name'].invalid && this.loginForm.controls['name'].touched" class="alert alert-danger">
+       <p *ngIf="this.loginForm.controls['name'].hasError('required')"> name est obligatoire  </p> 
+       <p  *ngIf="this.loginForm.controls['name'].hasError('minlength')"> name doit etre superieur a 4</p>
+    </div>
+
+    <label>cin</label>
+    <input type="number" class="form-control" placeholder="cin" formControlName="cin"/>
+    <div *ngIf="this.loginForm.controls['cin'].invalid &&this.loginForm.controls['cin'].touched" class="alert alert-danger">
+        <p *ngIf="this.loginForm.controls['cin'].hasError('required')"> cin est obligatoire</p>
+         <p *ngIf="this.loginForm.controls['cin'].hasError('length')"> cin doit etre 8 chiffres </p>
+    </div>
+
+    <label>email</label>
+    <input type="email" class="form-control" placeholder="email" formControlName="email"/>
+    <div *ngIf="this.loginForm.controls['email'].invalid  && this.loginForm.controls['email'].touched" class="alert alert-danger">
+        <p *ngIf="this.loginForm.controls['email'].hasError('required')">email est obligatoire</p>
+        <p *ngIf="this.loginForm.controls['email'].hasError('pattern')"> email doit etre valide </p>
+    </div>
+
+    <label>address</label>
+    <input type="text" class="form-control" placeholder="address" formControlName="address" />
+    <div *ngIf="this.loginForm.controls['address'].invalid && this.loginForm.controls['address'].touched" class="alert alert-danger">
+        <p *ngIf="this.loginForm.controls['address'].hasError('required')">address est obligatoire </p>
+    </div>
+
+
+    <input type="submit" value="save" (click)="save()" [disabled]="loginForm.invalid"/>
+</form>
