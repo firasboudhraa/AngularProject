@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4 text-primary">✨ Add a New Product ✨</h2>
+
+        <form [formGroup]="productForm"  class="needs-validation">
+            <div class="form-group">
+                <label class="fw-bold">📌 Title</label>
+                <input type="text" class="form-control" formControlName="title" placeholder="Enter product title">
+                <div *ngIf="productForm.controls['title'].invalid && productForm.controls['title'].touched" class="text-danger">
+                    <p *ngIf="productForm.controls['title'].hasError('required')">⚠ Title is required</p>
+                    <p *ngIf="productForm.controls['title'].hasError('minlength')">⚠ Minimum 4 characters required</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="fw-bold">💰 Price (TND)</label>
+                <input type="number" class="form-control" formControlName="price" placeholder="Enter price">
+                <div *ngIf="productForm.controls['price'].invalid && productForm.controls['price'].touched" class="text-danger">
+                    <p *ngIf="productForm.controls['price'].hasError('required')">⚠ Price is required</p>
+                    <p *ngIf="productForm.controls['price'].hasError('min')">⚠ Price must be greater than 0</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="fw-bold">📦 Quantity</label>
+                <input type="number" class="form-control" formControlName="quantity" placeholder="Enter quantity">
+                <div *ngIf="productForm.controls['quantity'].invalid && productForm.controls['quantity'].touched" class="text-danger">
+                    <p *ngIf="productForm.controls['quantity'].hasError('required')">⚠ Quantity is required</p>
+                    <p *ngIf="productForm.controls['quantity'].hasError('min')">⚠ Must be at least 1</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="fw-bold">🖼️ Image URL</label>
+                <input type="text" class="form-control" formControlName="img" placeholder="Enter image URL">
+                <div *ngIf="productForm.controls['img'].invalid && productForm.controls['img'].touched" class="text-danger">
+                    <p *ngIf="productForm.controls['img'].hasError('required')">⚠ Image URL is required</p>
+                    <p *ngIf="productForm.controls['img'].hasError('minlength')">⚠ Minimum 6 characters required</p>
+                    <p *ngIf="productForm.controls['img'].hasError('pattern')">⚠ Enter a valid URL (https://example.com)</p>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3 w-100 fw-bold shadow" [disabled]="productForm.invalid">
+                🚀 Add Product
+            </button>
+        </form>
+    </div>
+</div>

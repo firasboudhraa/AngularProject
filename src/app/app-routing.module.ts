@@ -6,9 +6,11 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { DetailProdComponent } from './detail-prod/detail-prod.component';
 import { LoginComponent } from './login/login.component';
 import { AddResidenceComponent } from './add-residence/add-residence.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 const routes: Routes = [
   {path:'products',component:HomeComponent},
+  {path:'add-product',component:AddProductComponent},
   {path:'residences',component:ResidencesComponentComponent},
   {path:'detail/:id',component:DetailProdComponent},
   {path:'login',component:LoginComponent},
