@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'residences',component:ResidencesComponentComponent},
   {path:'detail/:id',component:DetailProdComponent},
   {path:'login',component:LoginComponent},
-  {path:'/addResidence',component:AddResidenceComponent},
+  {path:'add-residence',component:AddResidenceComponent},
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'**',component:NotfoundComponent},
 ];

@@ -12,7 +12,6 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { DetailProdComponent } from './detail-prod/detail-prod.component';
 import { LoginComponent } from './login/login.component';
 import { AddResidenceComponent } from './add-residence/add-residence.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +21,7 @@ import { AddResidenceComponent } from './add-residence/add-residence.component';
     NotfoundComponent,
     DetailProdComponent,
     LoginComponent,
-    AddResidenceComponent
+    AddResidenceComponent,
   ],
   imports: [
     BrowserModule,
