@@ -16,12 +16,15 @@ export class ResidenceService {
     return this.http.get<Residence[]>("http://localhost:3000/residences") ;
   }
 
-  // Récupérer une résidence par ID
   getResidenceById(id: number): Observable<Residence> {
     return this.http.get<Residence>(`${this.apiUrl}/${id}`);
   }
 
   addResidence( residence: Residence ){
     return this.http.post<Residence>(`${this.apiUrl}`,residence)
+  }
+  deleteResidence(id : number) {
+    return this.http.delete("http://localhost:3000/residences/"+id)
+
   }
 }

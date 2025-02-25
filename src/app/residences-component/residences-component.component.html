@@ -17,6 +17,7 @@
       <button (click)="showLocation(r)">📍 Show Location</button>
       <button (click)="addToFavorites(r)">❤️ Like</button>
       <button [routerLink]="['/residenceDetail', r.id]">ℹ️ Details</button>
+      <button (click)="delete(r.id)">🗑️ Supprimer</button>
     </div>
   </li>
 </ul>
@@ -33,4 +34,4 @@
   <p>Aucune résidence favorite pour le moment.</p>
 </ng-template>
 
-<button routerLink="/add-residence">➕ Add Résidence</button>
+<button routerLink="/add-residence" class="btn btn-primary">➕ Add Résidence</button>

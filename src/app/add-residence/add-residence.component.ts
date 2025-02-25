@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ResidenceService } from '../services/residence.service';
 import { Router } from '@angular/router';
-import { Residence } from '../core/models/residence';
-
 @Component({
   selector: 'app-add-residence',
   templateUrl: './add-residence.component.html',
@@ -27,15 +25,14 @@ export class AddResidenceComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.ResidenceForm.valid) {
-      const formData: Residence = this.ResidenceForm.value; // Obtenir les valeurs du formulaire
-      
-      this.rs.addResidence(formData).subscribe({
+    if (this.ResidenceForm.valid) {      
+      this.rs.addResidence(this.ResidenceForm.value).subscribe({
         next: () => {
           console.log('Résidence ajoutée avec succès !');
-          this.router.navigate(['/residences']); // Redirection après ajout
+          this.router.navigate(['/residences']); 
         },
       });
     }
   }
+  
 }
