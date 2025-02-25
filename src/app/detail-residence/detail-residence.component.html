@@ -1,0 +1,13 @@
+<div *ngIf="residence">
+    <h2>{{ residence.name }}</h2>
+    <img [src]="residence.image" alt="{{ residence.name }}" class="residence-img">
+    <p><strong>Adresse :</strong> {{ residence.address }}</p>
+    <p><strong>Statut :</strong> {{ residence.status }}</p>
+  
+    <button routerLink="/">Retour</button>
+  </div>
+  
+  <div *ngIf="!residence">
+    <p>Résidence non trouvée.</p>
+  </div>
+  

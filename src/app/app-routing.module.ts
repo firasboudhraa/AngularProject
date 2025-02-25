@@ -7,6 +7,7 @@ import { DetailProdComponent } from './detail-prod/detail-prod.component';
 import { LoginComponent } from './login/login.component';
 import { AddResidenceComponent } from './add-residence/add-residence.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { DetailResidenceComponent } from './detail-residence/detail-residence.component';
 
 const routes: Routes = [
   {path:'products',component:HomeComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'detail/:id',component:DetailProdComponent},
   {path:'login',component:LoginComponent},
   {path:'add-residence',component:AddResidenceComponent},
+  {path:'residenceDetail/:id',component:DetailResidenceComponent},
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'**',component:NotfoundComponent},
 ];

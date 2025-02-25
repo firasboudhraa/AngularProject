@@ -7,11 +7,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detail-prod.component.css']
 })
 export class DetailProdComponent {
-  
   id!: number
   constructor( private Act:ActivatedRoute){}
+  
+
   ngOnInit(){
     this.id=this.Act.snapshot.params['id']
   }
-
 }

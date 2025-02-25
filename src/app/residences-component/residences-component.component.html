@@ -1,35 +1,36 @@
 <p>residences-component works!</p>
 
-<ul *ngFor="let r of listResidences" style="display: inline-block;">
-    <li>
-        <img [src]="r.image" alt="{{ r.name }}" class="residence-img">
-    </li>
-    <li>
-        <button (click)="showLocation(r)">Show Location</button>
-    </li>
-    <div [ngSwitch]="r.status">
+<ul>
+  <li *ngFor="let r of listResidences" class="residence-card">
+    <img [src]="r.image" alt="{{ r.name }}" class="residence-img">
+
+    <div class="residence-info">
+      <h3>{{ r.name }}</h3>
+      <p>{{ r.address }}</p>
+
+      <div [ngSwitch]="r.status">
         <span *ngSwitchCase="'Disponible'" class="status available">🟢 Disponible</span>
         <span *ngSwitchCase="'En Construction'" class="status construction">🟠 En Construction</span>
         <span *ngSwitchCase="'Vendu'" class="status sold">🔴 Vendu</span>
       </div>
-    
-      <button (click)="addToFavorites(r)">❤️ Like</button>
 
+      <button (click)="showLocation(r)">📍 Show Location</button>
+      <button (click)="addToFavorites(r)">❤️ Like</button>
+      <button [routerLink]="['/residenceDetail', r.id]">ℹ️ Details</button>
+    </div>
+  </li>
 </ul>
 
 <h3>⭐ Résidences Favorites :</h3>
 <ul *ngIf="favorites.length > 0; else noFavorites">
-    <li *ngFor="let fav of favorites">
-        <img [src]="fav.image" alt="{{ fav.name }}" class="residence-img">
-        <p>{{ fav.name }}</p>
-    </li>
+  <li *ngFor="let fav of favorites" class="favorite-card">
+    <img [src]="fav.image" alt="{{ fav.name }}" class="residence-img">
+    <p>{{ fav.name }}</p>
+  </li>
 </ul>
 
 <ng-template #noFavorites>
-    <p>Aucune résidence favorite pour le moment.</p>
+  <p>Aucune résidence favorite pour le moment.</p>
 </ng-template>
 
-<button  routerLink="/add-residence">Add résidence</button>
-
-
-
+<button routerLink="/add-residence">➕ Add Résidence</button>

@@ -13,6 +13,8 @@ import { DetailProdComponent } from './detail-prod/detail-prod.component';
 import { LoginComponent } from './login/login.component';
 import { AddResidenceComponent } from './add-residence/add-residence.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import {HttpClientModule} from '@angular/common/http';
+import { DetailResidenceComponent } from './detail-residence/detail-residence.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,12 +26,14 @@ import { AddProductComponent } from './add-product/add-product.component';
     LoginComponent,
     AddResidenceComponent,
     AddProductComponent,
+    DetailResidenceComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
