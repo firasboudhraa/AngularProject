@@ -1,6 +1,6 @@
+import { Residence } from './../core/models/residence';
 import  { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Residence } from '../core/models/residence';
 import type { Observable } from 'rxjs';
 
 
@@ -19,5 +19,9 @@ export class ResidenceService {
   // Récupérer une résidence par ID
   getResidenceById(id: number): Observable<Residence> {
     return this.http.get<Residence>(`${this.apiUrl}/${id}`);
+  }
+
+  addResidence( residence: Residence ){
+    return this.http.post<Residence>(`${this.apiUrl}`,residence)
   }
 }
