@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { AddResidenceComponent } from './add-residence/add-residence.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { DetailResidenceComponent } from './detail-residence/detail-residence.component';
+import { ModifyResidenceComponent } from './modify-residence/modify-residence.component';
 
 const routes: Routes = [
   {path:'products',component:HomeComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'add-residence',component:AddResidenceComponent},
   {path:'residenceDetail/:id',component:DetailResidenceComponent},
+  {path:'modify-residence/:id',component:ModifyResidenceComponent},
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'**',component:NotfoundComponent},
 ];

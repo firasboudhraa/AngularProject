@@ -1,32 +1,38 @@
 <p>residences-component works!</p>
 
-<ul>
-  <li *ngFor="let r of listResidences" class="residence-card">
-    <img [src]="r.image" alt="{{ r.name }}" class="residence-img">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let r of listResidences">
+      <div class="card residence-card">
+        <img [src]="r.image" alt="{{ r.name }}" class="card-img-top residence-img">
+        <div class="card-body">
+          <h5 class="card-title">{{ r.name }}</h5>
+          <p class="card-text">{{ r.address }}</p>
 
-    <div class="residence-info">
-      <h3>{{ r.name }}</h3>
-      <p>{{ r.address }}</p>
+          <div [ngSwitch]="r.status">
+            <span *ngSwitchCase="'Disponible'" class="badge bg-success">🟢 Disponible</span>
+            <span *ngSwitchCase="'En Construction'" class="badge bg-warning text-dark">🟠 En Construction</span>
+            <span *ngSwitchCase="'Vendu'" class="badge bg-danger">🔴 Vendu</span>
+          </div>
 
-      <div [ngSwitch]="r.status">
-        <span *ngSwitchCase="'Disponible'" class="status available">🟢 Disponible</span>
-        <span *ngSwitchCase="'En Construction'" class="status construction">🟠 En Construction</span>
-        <span *ngSwitchCase="'Vendu'" class="status sold">🔴 Vendu</span>
+          <div class="button-group mt-2">
+            <button class="btn btn-info" (click)="showLocation(r)">📍 Show Location</button>
+            <button class="btn btn-primary" (click)="addToFavorites(r)">❤️ Like</button>
+            <button class="btn btn-secondary" [routerLink]="['/residenceDetail', r.id]">ℹ️ Details</button>
+            <button class="btn btn-warning" [routerLink]="['/modify-residence', r.id]">✏️ Modifier</button>
+            <button class="btn btn-danger" (click)="delete(r.id)">🗑️ Supprimer</button>
+          </div>
+        </div>
       </div>
-
-      <button (click)="showLocation(r)">📍 Show Location</button>
-      <button (click)="addToFavorites(r)">❤️ Like</button>
-      <button [routerLink]="['/residenceDetail', r.id]">ℹ️ Details</button>
-      <button (click)="delete(r.id)">🗑️ Supprimer</button>
     </div>
-  </li>
-</ul>
+  </div>
+</div>
 
 <h3>⭐ Résidences Favorites :</h3>
-<ul *ngIf="favorites.length > 0; else noFavorites">
-  <li *ngFor="let fav of favorites" class="favorite-card">
-    <img [src]="fav.image" alt="{{ fav.name }}" class="residence-img">
-    <p>{{ fav.name }}</p>
+<ul *ngIf="favorites.length > 0; else noFavorites" class="list-group">
+  <li *ngFor="let fav of favorites" class="list-group-item d-flex align-items-center">
+    <img [src]="fav.image" alt="{{ fav.name }}" class="residence-img me-2" style="width: 50px; height: 50px; border-radius: 50%;">
+    <p class="mb-0">{{ fav.name }}</p>
   </li>
 </ul>
 
@@ -34,4 +40,4 @@
   <p>Aucune résidence favorite pour le moment.</p>
 </ng-template>
 
-<button routerLink="/add-residence" class="btn btn-primary">➕ Add Résidence</button>
+<button routerLink="/add-residence" class="btn btn-success mt-3">➕ Add Résidence</button>
