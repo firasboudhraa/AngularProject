@@ -23,8 +23,12 @@ export class ResidenceService {
   addResidence( residence: Residence ){
     return this.http.post<Residence>(`${this.apiUrl}`,residence)
   }
+
   deleteResidence(id : number) {
     return this.http.delete("http://localhost:3000/residences/"+id)
+  }
 
+  updateResidence(residence:Residence) {
+    return this.http.put<Residence>("http://localhost:3000/residences/"+residence.id,residence)
   }
 }

@@ -39,14 +39,8 @@ addToFavorites(r: Residence) {
 }
 
 delete( id :number){
-  this.rs.deleteResidence(id).subscribe({
-    next: () => {
-      console.log('Résidence supprimée avec succès !');
-      // Filtrer la liste pour retirer la résidence supprimée
-      this.listResidences = this.listResidences.filter(residence => residence.id !== id);
-    }
-  })
-
+  this.rs.deleteResidence(id).subscribe(
+    ()=> this.ngOnInit()
+  )
 }
-
 }
