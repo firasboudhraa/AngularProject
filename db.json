@@ -1,0 +1,29 @@
+{
+  "residences": [
+    {
+      "id": "2",
+      "name": "Résidence B",
+      "address": "inconnu",
+      "image": "https://media.istockphoto.com/id/1368330586/fr/photo/porche-et-entr%C3%A9e-de-la-nouvelle-maison.jpg?s=612x612&w=0&k=20&c=V95qvYo7Obq2JsgHM7gsRT2qw0RIY1L44NFgWzt7iEg=",
+      "status": "En Construction",
+      "created_at": "2025-02-25T13:23:18.000Z",
+      "updated_at": "2025-02-25T14:49:43.000Z"
+    },
+    {
+      "id": "3",
+      "name": "Résidence F",
+      "address": "Rue 456, Lyon",
+      "status": "Vendu",
+      "image": "https://media.istockphoto.com/id/876864896/fr/photo/luxueuse-maison-%C3%A0-bellevue-wa-de-nouvelle-construction.jpg?s=612x612&w=0&k=20&c=z2qp8pa4KFvbOF0m78P9-ai0ZSRvBbQlpJ-N_ogwvI4="
+    },
+    {
+      "id": "4",
+      "name": "Jasmin",
+      "address": "Manouba",
+      "image": "https://media.gettyimages.com/id/1342242296/fr/photo/arri%C3%A8re-cour-dune-maison-priv%C3%A9e-moderne.jpg?s=612x612&w=gi&k=20&c=Ro0YWk13zy31duADpyjYRK4vCaP9z0nF5QuTPNzpphA=",
+      "status": "Disponible",
+      "created_at": "2025-02-25T14:47:44.000Z",
+      "updated_at": "2025-02-25T14:47:44.000Z"
+    }
+  ]
+}
