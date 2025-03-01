@@ -15,7 +15,8 @@ import { AddResidenceComponent } from './add-residence/add-residence.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import {HttpClientModule} from '@angular/common/http';
 import { DetailResidenceComponent } from './detail-residence/detail-residence.component';
-import { ModifyResidenceComponent } from './modify-residence/modify-residence.component'
+import { ModifyResidenceComponent } from './modify-residence/modify-residence.component';
+import { ModifyProductComponent } from './modify-product/modify-product.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { ModifyResidenceComponent } from './modify-residence/modify-residence.co
     AddProductComponent,
     DetailResidenceComponent,
     ModifyResidenceComponent,
+    ModifyProductComponent,
   ],
   imports: [
     BrowserModule,

@@ -39,12 +39,12 @@ export class ModifyResidenceComponent {
 
    onSubmit(){
     if (this.ResidenceForm.valid) {      
-      this.mr.updateResidence(this.ResidenceForm.value).subscribe({
-        next: () => {
+      this.mr.updateResidence(this.ResidenceForm.value).subscribe(
+         () => {
           console.log('Résidence ajoutée avec succès !');
           this.router.navigate(['/residences']); 
         },
-      });
+      );
     }
    }
 
