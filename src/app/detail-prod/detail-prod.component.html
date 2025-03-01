@@ -1,2 +1,26 @@
-<p>detail-prod works!</p>
-{{id}}
+<div *ngIf="product" class="container mt-5">
+    <div class="card shadow-lg border-0" style="max-width: 600px; margin: auto;">
+      <div class="card-header bg-primary text-white text-center">
+        <h2 class="m-0">{{ product.title }}</h2>
+      </div>
+  
+      <div class="card-body text-center">
+        <!-- Image du produit -->
+        <img [src]="product.image" alt="{{ product.title }}" class="img-fluid rounded mb-3" style="max-height: 300px; object-fit: cover;">
+  
+        <!-- Informations sur le produit -->
+        <p class="mb-2"><strong>Prix :</strong> <span class="text-success fw-bold">{{ product.price }} TND</span></p>
+        <p class="mb-3"><strong>Quantité :</strong> <span class="text-primary">{{ product.quantity }}</span></p>
+  
+        <!-- Bouton Retour -->
+        <a routerLink="/products" class="btn btn-outline-primary">
+          <i class="fas fa-arrow-left"></i> Retour
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Message si le produit n'existe pas -->
+  <div *ngIf="!product" class="alert alert-danger text-center mt-5">
+    <i class="fas fa-exclamation-triangle"></i> Produit non trouvé.
+  </div>  

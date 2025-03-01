@@ -2,7 +2,16 @@
     <div class="card shadow-lg p-4">
         <h2 class="text-center mb-4 text-primary">✨ Add a New Product ✨</h2>
 
-        <form [formGroup]="productForm"  class="needs-validation">
+        <form [formGroup]="productForm"  (ngSubmit)="onSubmit()" class="needs-validation">
+                  <!-- Identity -->
+            <div class="form-group">
+                <label class="form-label fw-bold">Identity <i class="bi bi-person-badge"></i></label>
+                <input type="number" class="form-control" formControlName="id" placeholder="Enter identity number" />
+                <div *ngIf="productForm.controls['id'].invalid && productForm.controls['id'].touched" class="text-danger small mt-1">
+                <p *ngIf="productForm.controls['id'].hasError('required')">Identity is obligatory</p>
+                <p *ngIf="productForm.controls['id'].hasError('min')">Identity must be a positive number</p>
+                </div>
+            </div>
             <div class="form-group">
                 <label class="fw-bold">📌 Title</label>
                 <input type="text" class="form-control" formControlName="title" placeholder="Enter product title">
@@ -32,11 +41,11 @@
 
             <div class="form-group">
                 <label class="fw-bold">🖼️ Image URL</label>
-                <input type="text" class="form-control" formControlName="img" placeholder="Enter image URL">
-                <div *ngIf="productForm.controls['img'].invalid && productForm.controls['img'].touched" class="text-danger">
-                    <p *ngIf="productForm.controls['img'].hasError('required')">⚠ Image URL is required</p>
-                    <p *ngIf="productForm.controls['img'].hasError('minlength')">⚠ Minimum 6 characters required</p>
-                    <p *ngIf="productForm.controls['img'].hasError('pattern')">⚠ Enter a valid URL (https://example.com)</p>
+                <input type="text" class="form-control" formControlName="image" placeholder="Enter image URL">
+                <div *ngIf="productForm.controls['image'].invalid && productForm.controls['image'].touched" class="text-danger">
+                    <p *ngIf="productForm.controls['image'].hasError('required')">⚠ Image URL is required</p>
+                    <p *ngIf="productForm.controls['image'].hasError('minlength')">⚠ Minimum 6 characters required</p>
+                    <p *ngIf="productForm.controls['image'].hasError('pattern')">⚠ Enter a valid URL (https://example.com)</p>
                 </div>
             </div>
 

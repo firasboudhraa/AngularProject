@@ -22,5 +22,4 @@ export class DetailResidenceComponent {
         (data) => this.residence = data
       )
     }
-
 }

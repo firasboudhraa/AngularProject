@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import type { Product } from '../core/models/product';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,13 @@ export class HomeComponent {
   color!:string
   search!:number 
   title: string = "welcome 4arctic 7"
-  products!: any[]
+  products!: Product[]
 
   constructor(private ps:ProductService){}
  ngOnInit(){
-  this.products=this.ps.products
+  this.ps.getProduct().subscribe(
+    (data)=> this.products=data
+  )
  }
   show() {
     alert("bonjour")
@@ -24,12 +27,18 @@ export class HomeComponent {
   like(i: number) {
     this.products[i].like++
   }
-  acheterProduit(product: any) {
+  acheterProduit(product: Product) {
     if (product.quantity > 0) {
       product.quantity--;
     } else {
       alert("Stock épuisé !");
     }
+  }
+
+  delete (id:number){
+    this.ps.deleteProduct(id).subscribe(
+      ()=>this.ngOnInit()
+    )
   }
 
 }
