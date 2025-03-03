@@ -1,6 +1,6 @@
 <div class="container">
-  <!-- Search Input -->
-  <div class="row justify-content-center my-3">
+  <!-- Search Bar -->
+  <div class="row justify-content-center my-4">
     <div class="col-md-6">
       <input 
         type="text" 
@@ -10,45 +10,57 @@
       >
     </div>
   </div>
-  <div class="container">
+
+  <!-- Residences List -->
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let r of listResidences">
-      <div *ngIf="r.name == search || search == ''">
-      <div class="card residence-card">
-        <img [src]="r.image" alt="{{ r.name }}" class="card-img-top residence-img">
-        <div class="card-body">
-          <h5 class="card-title">{{ r.name }}</h5>
-          <p class="card-text">{{ r.address }}</p>
+      <div *ngIf="r.name.toLowerCase().includes(search.toLowerCase()) || search == ''">
+        <div class="card residence-card shadow-lg border-0 rounded-4 overflow-hidden">
+          <img [src]="r.image" alt="{{ r.name }}" class="card-img-top residence-img">
+          <div class="card-body text-center">
+            <h5 class="card-title fw-bold">{{ r.name }}</h5>
+            <p class="card-text text-muted"><i class="bi bi-geo-alt-fill"></i> {{ r.address }}</p>
 
-          <div [ngSwitch]="r.status">
-            <span *ngSwitchCase="'Disponible'" class="badge bg-success">🟢 Disponible</span>
-            <span *ngSwitchCase="'En Construction'" class="badge bg-warning text-dark">🟠 En Construction</span>
-            <span *ngSwitchCase="'Vendu'" class="badge bg-danger">🔴 Vendu</span>
-          </div>
+            <!-- Status Badge -->
+            <div [ngSwitch]="r.status">
+              <span *ngSwitchCase="'Disponible'" class="badge bg-success px-3 py-2 rounded-pill">🟢 Disponible</span>
+              <span *ngSwitchCase="'En Construction'" class="badge bg-warning text-dark px-3 py-2 rounded-pill">🟠 En Construction</span>
+              <span *ngSwitchCase="'Vendu'" class="badge bg-danger px-3 py-2 rounded-pill">🔴 Vendu</span>
+            </div>
 
-          <div class="button-group mt-2">
-            <button class="btn btn-info" (click)="showLocation(r)">📍 Show Location</button>
-            <button class="btn btn-primary" (click)="addToFavorites(r)">❤️ Like</button>
-            <button class="btn btn-secondary" [routerLink]="['/residenceDetail', r.id]">ℹ️ Details</button>
-            <button class="btn btn-warning" [routerLink]="['/modify-residence', r.id]">✏️ Modifier</button>
-            <button class="btn btn-danger" (click)="delete(r.id)">🗑️ Supprimer</button>
+            <!-- Action Buttons -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+              <button class="btn btn-info btn-sm px-3" (click)="showLocation(r)">📍 Voir Adresse</button>
+              <button class="btn btn-primary btn-sm px-3" (click)="addToFavorites(r)">❤️ Ajouter</button>
+              <button class="btn btn-secondary btn-sm px-3" [routerLink]="['/residenceDetail', r.id]">ℹ️ Détails</button>
+              <button class="btn btn-warning btn-sm px-3" [routerLink]="['/modify-residence', r.id]">✏️ Modifier</button>
+              <button class="btn btn-danger btn-sm px-3" (click)="delete(r.id)">🗑️ Supprimer</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Favorites Section -->
+  <div class="mt-5">
+    <h3 class="text-center fw-bold">⭐ Résidences Favorites</h3>
+    <ul *ngIf="favorites.length > 0; else noFavorites" class="list-group list-group-flush mt-3">
+      <li *ngFor="let fav of favorites" class="list-group-item d-flex align-items-center">
+        <img [src]="fav.image" alt="{{ fav.name }}" class="me-3" style="width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <p class="mb-0 fw-medium">{{ fav.name }}</p>
+      </li>
+    </ul>
+
+    <ng-template #noFavorites>
+      <p class="text-muted text-center mt-3">Aucune résidence favorite pour le moment.</p>
+    </ng-template>
+  </div>
+
+  <!-- Add Residence Button -->
+  <div class="text-center mt-4">
+    <button routerLink="/add-residence" class="btn btn-success btn-lg rounded-pill px-4 shadow">
+      ➕ Ajouter une Résidence
+    </button>
+  </div>
 </div>
-
-<h3>⭐ Résidences Favorites :</h3>
-<ul *ngIf="favorites.length > 0; else noFavorites" class="list-group">
-  <li *ngFor="let fav of favorites" class="list-group-item d-flex align-items-center">
-    <img [src]="fav.image" alt="{{ fav.name }}" class="residence-img me-2" style="width: 50px; height: 50px; border-radius: 50%;">
-    <p class="mb-0">{{ fav.name }}</p>
-  </li>
-</ul>
-
-<ng-template #noFavorites>
-  <p>Aucune résidence favorite pour le moment.</p>
-</ng-template>
-
-<button routerLink="/add-residence" class="btn btn-success mt-3">➕ Add Résidence</button>
