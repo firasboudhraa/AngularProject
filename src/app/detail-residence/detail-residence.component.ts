@@ -22,4 +22,10 @@ export class DetailResidenceComponent {
         (data) => this.residence = data
       )
     }
+
+    delete( id :number){
+      this.rs.deleteResidence(id).subscribe(
+        ()=> this.ngOnInit()
+      )
+    }
 }

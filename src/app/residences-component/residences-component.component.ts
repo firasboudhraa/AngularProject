@@ -9,11 +9,8 @@ import  { ResidenceService } from '../services/residence.service';
   styleUrls: ['./residences-component.component.css']
 })
 export class ResidencesComponentComponent {
-  // listResidences: Residence[] = [
-  //   { id: 1, name: 'Résidence A', address: 'Rue 123, Paris', image: 'assets/R1.jpg', status: 'Disponible' },
-  //   { id: 2, name: 'Résidence B', address: 'inconnu', image: 'assets/R2.jpg', status: 'En Construction' },
-  //   { id: 3, name: 'Résidence C', address: 'Rue 456, Lyon', image: 'assets/R3.jpg', status: 'Vendu' }
-  // ];
+  search!: string
+  selectedResidence: Residence | null = null;
   constructor (private rs:ResidenceService){}
   listResidences!:Residence[] ;
   ngOnInit(){
@@ -37,10 +34,24 @@ addToFavorites(r: Residence) {
     alert(`${r.name} ajouté aux favoris !`);
   }
 }
+removeFavorite(r: Residence) {
+  this.favorites = this.favorites.filter(fav => fav.id !== r.id);
+  alert(`${r.name} retiré des favoris.`);
+}
 
 delete( id :number){
   this.rs.deleteResidence(id).subscribe(
     ()=> this.ngOnInit()
   )
+}
+filteredResidences() : Residence[] {
+  if (this.search === '') {
+    return this.listResidences;
+  } else {
+    return this.listResidences.filter(
+      (r) => r.name.toLowerCase().includes(this.search
+        .toLowerCase())
+    );  
+}
 }
 }

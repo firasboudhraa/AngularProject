@@ -1,8 +1,19 @@
-<p>residences-component works!</p>
-
 <div class="container">
+  <!-- Search Input -->
+  <div class="row justify-content-center my-3">
+    <div class="col-md-6">
+      <input 
+        type="text" 
+        [(ngModel)]="search" 
+        class="form-control form-control-lg rounded-pill px-4 shadow-sm" 
+        placeholder="🔍 Rechercher une résidence..."
+      >
+    </div>
+  </div>
+  <div class="container">
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let r of listResidences">
+      <div *ngIf="r.name == search || search == ''">
       <div class="card residence-card">
         <img [src]="r.image" alt="{{ r.name }}" class="card-img-top residence-img">
         <div class="card-body">
